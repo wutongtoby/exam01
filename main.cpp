@@ -34,7 +34,6 @@ int main()
     while (1) { 
         if (duty_cycle == 10) {
             positive = false;
-            pc.printf("SDFSDFSDFSDF\r\n");
         }
         else if (duty_cycle == 0) {
             positive = true;
@@ -46,8 +45,7 @@ int main()
             duty_cycle -= 1;
 
         PWM.write(duty_cycle * 0.1);      // duty cycle, relative to period
-        pc.printf("%1.3d\r\n",duty_cycle);
-
+    
         if (i < 128) {
             ADCdata[i] = Sample;
             i++;
