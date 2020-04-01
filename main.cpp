@@ -27,26 +27,26 @@ int main()
 
 ///////////////////////////////////////////////////
     PWM.period(1.0/1000);      // 1000 Hz
-    float duty_cycle = 0;
+    int duty_cycle = 0;
     bool positive = true;
     PWM = 1.0;
 
     while (1) { 
-        if (duty_cycle == 1.0f) {
+        if (duty_cycle == 10) {
             positive = false;
-          //  pc.printf("SDFSDFSDFSDF\r\n");
+            pc.printf("SDFSDFSDFSDF\r\n");
         }
         else if (duty_cycle == 0) {
             positive = true;
         }
 
         if (positive)
-            duty_cycle += 0.1f;
-        else
-            duty_cycle -= 0.1f;
+            duty_cycle += 1;
+        else        
+            duty_cycle -= 1;
 
-        PWM.write(duty_cycle);      // duty cycle, relative to period
-        //pc.printf("%1.3f\r\n",duty_cycle);
+        PWM.write(duty_cycle * 0.1);      // duty cycle, relative to period
+        pc.printf("%1.3d\r\n",duty_cycle);
 
         if (i < 128) {
             ADCdata[i] = Sample;
